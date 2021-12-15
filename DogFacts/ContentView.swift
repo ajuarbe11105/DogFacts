@@ -10,25 +10,30 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var random = RandomDog()
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
+       
         NavigationView {
         List{
             ForEach(random.fact) { facts in
                 VStack(alignment: .leading) {
                     Text(facts.fact)
                         .font(.headline)
-                        .foregroundColor(.black)
+                       // .background(Color(UIColor.systemBackground))
+                        
                     
                 }
-                //.frame(maxWidth: .infinity)
             }
         } .navigationTitle("🐶 Dog Facts 🐶")
+                .navigationViewStyle(StackNavigationViewStyle())
         }
     }
+        
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().preferredColorScheme(.light)
     }
 }
