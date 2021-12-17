@@ -22,10 +22,14 @@ struct CatView: View {
                 
                 VStack(alignment: .center) {
                     
+                    Text("🐱 Cats 🐱")
+                        .font(.title)
+                        .padding()
+                    Spacer()
                     Spacer()
                     
                     Text(catFact.fact)
-                        .font(.title2)
+                        .font(.largeTitle)
                         .padding()
                     
                     Spacer()
@@ -44,8 +48,8 @@ struct CatView: View {
                                 .padding(60)
                         })
                     }
-                    .navigationTitle("🐱 Cats 🐱")
-                    .font(.title)
+//                    .navigationTitle("🐱 Cats 🐱")
+//                    .font(.title)
                 }
                 
         }

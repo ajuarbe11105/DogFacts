@@ -7,44 +7,42 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct DogView: View {
     
     @StateObject var random = RandomDog()
     @Environment(\.colorScheme) var colorScheme
     
     @StateObject var doggiePic = DogImage()
     
-   // @State var isSelected: Bool = false
-    
-   // @State var catRandom = ApiTest()
-    
     var body: some View {
        
         NavigationView {
-    
+           
             
             ForEach(random.fact) { facts in
                 
-                VStack(alignment: .leading) {
-                
+                VStack(alignment: .center) {
+               
+                    
+                    Text("🐶 Dogs 🐶")
+                        .font(.title)
                     
                     Spacer()
                     Text(facts.fact)
-                        .font(.title2)
+                        .font(.largeTitle)
                         .padding()
                     
                     Spacer()
                     //NEXT FACT BUTTON
                     HStack(alignment: .center) {
                     Button(action: {
-                        random.getPosts()
+                        withAnimation(.spring()) {
+                            random.getPosts()
+                            
+                        }
                       
                     }, label: {
-//                        Image(systemName: "arrow.clockwise")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 50, height: 75)
-//                            .padding()
+//
                         Text("Next Dog Fact")
                         
                             .bold()
@@ -66,31 +64,44 @@ struct ContentView: View {
 //                                   }
                         
                     }
-                        .navigationTitle("🐶 Dogs 🐶")
-                        .font(.title)
-                    
-                    
+//
+                                            
+                        .navigationBarItems(
+                            trailing:
+                                withAnimation(.spring()) {
+                                NavigationLink(destination: CatView(), label: {
+                                        HStack {
+                                            Text("Click here for cat facts🐱")
+                                        
+                                    }
+                                    })
+                                }
+                        )
+                                    
+                                }
                 
-                    
+                                }
+                                               
                 }
                     
             
+        .navigationViewStyle(StackNavigationViewStyle())
             }
         }
-                .navigationViewStyle(StackNavigationViewStyle())
-        }
+        
     
 //    func actionSheet() {
 //        guard let urlShare = URL(string: random.fact) else { return }
 //           let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
 //           UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
 //       }
-    }
+    
         
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().preferredColorScheme(.light)
+        DogView().preferredColorScheme(.light)
     }
 }
+                                          
