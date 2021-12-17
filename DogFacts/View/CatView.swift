@@ -54,6 +54,7 @@ struct CatView: View {
                 
         }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
         
     }
