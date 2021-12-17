@@ -17,7 +17,7 @@ class RandomDog: ObservableObject {
     
     func getPosts() {
         
-        guard let url = URL(string: "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all") else { return } //We got this url from /post1 from jsonplaceholder
+        guard let url = URL(string: "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1") else { return } //We got this url from /post1 from jsonplaceholder
         
         downloadData(fromURL: url) { (returnedData) in
             if let data = returnedData {
