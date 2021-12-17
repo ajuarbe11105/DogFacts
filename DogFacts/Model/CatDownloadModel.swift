@@ -1,29 +1,32 @@
 //
-//  DownloadModel.swift
+//  CatDownloadModel.swift
 //  DogFacts
 //
-//  Created by Alberto Juarbe on 12/15/21.
+//  Created by Alberto Juarbe on 12/16/21.
 //
 
 import SwiftUI
 
-class RandomDog: ObservableObject {
+class RandomCat: ObservableObject {
     
-    @Published var fact: [FactModel] = []
+    @Published var cat: [CatFactModel] = []
     
     init() {
-        getPosts()
+        getCatPosts()
+        
     }
     
-    func getPosts() {
+    
+    
+    func getCatPosts() {
         
-        guard let url = URL(string: "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1") else { return } //We got this url from /post1 from jsonplaceholder
+        guard let url = URL(string: "https://catfact.ninja/fact") else { return } //We got this url from /post1 from jsonplaceholder
         
         downloadData(fromURL: url) { (returnedData) in
             if let data = returnedData {
-                guard let newFacts = try? JSONDecoder().decode([FactModel].self, from: data) else { return }
+                guard let newPosts = try? JSONDecoder().decode(CatFactModel.self, from: data) else { return }
                 DispatchQueue.main.async { [weak self] in
-                    self?.fact = newFacts
+                    self?.cat = [newPosts]
                     
                 }
             }else {
@@ -51,6 +54,3 @@ class RandomDog: ObservableObject {
         }.resume()
     }
                           }
-
-
-
