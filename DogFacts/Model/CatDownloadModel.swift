@@ -13,10 +13,7 @@ class RandomCat: ObservableObject {
     
     init() {
         getCatPosts()
-        
     }
-    
-    
     
     func getCatPosts() {
         

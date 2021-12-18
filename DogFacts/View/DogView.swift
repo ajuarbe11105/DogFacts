@@ -16,33 +16,45 @@ struct DogView: View {
     
     var body: some View {
        
+       
         NavigationView {
+            ZStack {
+                Color.green
+                    .ignoresSafeArea()
            
             
             ForEach(random.fact) { facts in
                 
                 VStack(alignment: .center) {
-               
+
                     
-                    Text("🐶 Dogs 🐶")
-                        .font(.title)
-                    
-                    Spacer()
-                    Text(facts.fact)
-                        .font(.largeTitle)
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.white)
+                        .shadow(color: .blue, radius: 25)
+                        
                         .padding()
+                        .overlay(
+                            Text(facts.fact)
+                                .font(.largeTitle)
+                                .foregroundColor(.black)
+                                .padding()
+                                .padding()
+                                
+                        
+                        )
                     
                     Spacer()
+                    
                     //NEXT FACT BUTTON
                     HStack(alignment: .center) {
-                    Button(action: {
-                        withAnimation(.spring()) {
-                            random.getPosts()
+                       
+                            Button(action: {
+                                random.getPosts()
                             
-                        }
+                      
                       
                     }, label: {
-//
+
                         Text("Next Dog Fact")
                         
                             .bold()
@@ -55,50 +67,37 @@ struct DogView: View {
                             .padding(60)
                         
                     })
-//                        Button(action: actionSheet) {
-//                                       Image(systemName: "square.and.arrow.up")
-//                                           .resizable()
-//                                           .aspectRatio(contentMode: .fit)
-//                                           .frame(width: 36, height: 36)
-                                            //.padding()
-//                                   }
+                        
+            
                         
                     }
-//
+
                                             
                         .navigationBarItems(
                             trailing:
-                                withAnimation(.spring()) {
                                 NavigationLink(destination: CatView(), label: {
+                                    
                                         HStack {
-                                            Text("Click here for cat facts🐱")
+                                            Text("🐱 Cat Facts 🐱")
+                                                .foregroundColor(.black)
                                         
                                     }
                                     })
-                                }
+                                
                         )
                                     
                                 }
+                .navigationTitle("🐶 Dogs 🐶")
                 
                                 }
-                                               
                 }
-                    
-            
+               
         .navigationViewStyle(StackNavigationViewStyle())
             }
         }
+}
         
     
-//    func actionSheet() {
-//        guard let urlShare = URL(string: random.fact) else { return }
-//           let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
-//           UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
-//       }
-    
-        
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         DogView().preferredColorScheme(.light)
