@@ -15,92 +15,92 @@ struct DogView: View {
     @StateObject var doggiePic = DogImage()
     
     var body: some View {
-       
-       
+        
+        
         NavigationView {
             ZStack {
                 Color.green
                     .ignoresSafeArea()
-           
-            
-            ForEach(random.fact) { facts in
                 
-                VStack(alignment: .center) {
-
+                
+                ForEach(random.fact) { facts in
                     
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.white)
-                        .shadow(color: .blue, radius: 25)
+                    VStack(alignment: .center) {
                         
-                        .padding()
-                        .overlay(
-                            Text(facts.fact)
-                                .font(.largeTitle)
-                                .foregroundColor(.black)
-                                .padding()
-                                .padding()
+                        
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.white)
+                            .shadow(color: .blue, radius: 25)
+                        
+                            .padding()
+                            .overlay(
+                                Text(facts.fact)
+                                    .font(.largeTitle)
+                                    .foregroundColor(.black)
+                                    .padding()
+                                    .padding()
                                 
+                                
+                            )
                         
-                        )
-                    
-                    Spacer()
-                    
-                    //NEXT FACT BUTTON
-                    HStack(alignment: .center) {
-                       
+                        Spacer()
+                        
+                        //NEXT FACT BUTTON
+                        HStack(alignment: .center) {
+                            
                             Button(action: {
                                 random.getPosts()
+                                
+                                
+                                
+                            }, label: {
+                                
+                                Text("Next Dog Fact")
+                                
+                                    .bold()
+                                    .font(.title3)
+                                    .frame(width: 280, height: 50, alignment: .center)
+                                    .background(Color(.systemBlue))
+                                    .foregroundColor(.white)
+                                    .cornerRadius(15)
+                                //.frame(width: 300, height: 300)
+                                    .padding(60)
+                                
+                            })
                             
-                      
-                      
-                    }, label: {
-
-                        Text("Next Dog Fact")
+                            
+                            
+                        }
                         
-                            .bold()
-                            .font(.title3)
-                            .frame(width: 280, height: 50, alignment: .center)
-                            .background(Color(.systemBlue))
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
-                        //.frame(width: 300, height: 300)
-                            .padding(60)
                         
-                    })
-                        
-            
-                        
-                    }
-
-                                            
                         .navigationBarItems(
                             trailing:
                                 NavigationLink(destination: CatView(), label: {
                                     
-                                        HStack {
-                                            Text("🐱 Cat Facts 🐱")
-                                                .foregroundColor(.black)
+                                    HStack {
+                                        Text("🐱 Cat Facts 🐱")
+                                            .foregroundColor(.black)
                                         
                                     }
-                                    })
-                                
+                                })
+                            
                         )
-                                    
-                                }
-                .navigationTitle("🐶 Dogs 🐶")
-                
-                                }
+                        
+                    }
+                    .navigationTitle("🐶 Dogs 🐶")
+                    
                 }
-               
-        .navigationViewStyle(StackNavigationViewStyle())
             }
+            
+            .navigationViewStyle(StackNavigationViewStyle())
         }
+    }
 }
-        
-    
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         DogView().preferredColorScheme(.light)
     }
 }
-                                          
+

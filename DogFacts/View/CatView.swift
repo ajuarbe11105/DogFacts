@@ -20,9 +20,9 @@ struct CatView: View {
             
             ZStack {
             
-                Color.green
-                    .ignoresSafeArea()
-                
+//                Color.green
+//                    .ignoresSafeArea()
+//                
                 
             ForEach(cat.cat) { catFact in
                 
